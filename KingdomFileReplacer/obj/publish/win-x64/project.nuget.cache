@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "187F62HUhWKDy76Pi7WbDVoRDFNonh7QFGgqGqOoOV2GMh5VPljmXQ0EgGydAvUGCS0jZpS6I5e8aWGeXRUbfA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jajo7\\source\\repos\\KingdomFileReplacer\\KingdomFileReplacer\\KingdomFileReplacer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jajo7\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.10\\microsoft.netcore.app.runtime.win-x64.6.0.10.nupkg.sha512",
+    "C:\\Users\\jajo7\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.10\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.10.nupkg.sha512",
+    "C:\\Users\\jajo7\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.10\\microsoft.aspnetcore.app.runtime.win-x64.6.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}
