@@ -1,5 +1,0 @@
-DISC_TYPE="Wii"
-IMAGE_TYPE="WBFS"
-IMAGE_EXT="wbfs"
-PART_ID="R2DEEB"
-PART_NAME="Dokapon Kingdom"
