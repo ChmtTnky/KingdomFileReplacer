@@ -21,15 +21,16 @@ namespace KingdomFileReplacer
 			MessageBox.Show
 				(
 				"Step 1: Select a copy of Dokapon Kingdom.\n" +
-				"Step 2: Select what to replace.\n" +
-				"Step 3: Select a folder with the necessary files.\n" +
-				"Step 4: Apply the modification.\n\n" +
-				"Only ISO and WBFS can be modified.\n" +
+				"Step 2: Select what file/s to replace.\n" +
+				"Step 3: Select a folder with mod files.\n" +
+				"Step 4: Apply the mod.\n\n" +
+				"Notes:\n" +
+				"Only ISO and WBFS files can be modified.\n" +
 				"This program will automatically handle all file extraction and replacement.\n" +
 				"If you select Any, this program will extract and search all the game files and replace a file if it can find it. As a result, Any is slower than the other options.\n" +
 				"When selecting Any, files located in the GAME.PAC will not be replaced if a new GAME.PAC is provided separately.\n" +
 				"This program assumes all file names match what is being replaced.\n" +
-				"After pressing Apply, a new ISO file will be created in the same folder as the original game file. This will overwrite an existing file if it has the same name as the output. The new ISO can then be run through standard means.",
+				"After pressing Apply, a new WBFS file will be created in the same folder as the original game file. This will overwrite an existing file if it has the same name as the output. The new WBFS can then be run through Dolphin or on a Wii.",
 				"Instructions and Notes",
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information
@@ -49,6 +50,14 @@ namespace KingdomFileReplacer
 				for (int i = 0; i < file_names.Length; i++)
 				{
 					Selected_Folder[Path.GetFileName(file_names[i])] = file_names[i];
+
+					if (Path.GetExtension(file_names[i]) == ".dsp")
+					{
+						BinaryWriter writer = new BinaryWriter(File.Open(file_names[i], System.IO.FileMode.Open));
+						writer.BaseStream.Position = 0x18;
+						writer.Write((int)0);
+						writer.Close();
+					}
 				}
 				// the full path isnt shown because it gets cut off by the small window
 				SelectedFolderLabel.Text = $"Folder: {Path.GetFileName(SelectFolderDialog.SelectedPath)}";
@@ -166,18 +175,18 @@ namespace KingdomFileReplacer
 						Process? process = Process.Start(new ProcessStartInfo()
 						{
 							FileName = Path.Combine("WIT", "wit.exe"),
-							Arguments = $"copy -o -R \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")}\"",
+							Arguments = $"copy -o -R \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")}\"",
 						});
 						process?.WaitForExit();
 						process?.Close();
 
 						// check if iso was made
-						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")))
+						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")))
 						{
 							MessageBox.Show
 								(
-								"The new ISO was not found in the expected directory.",
-								"Error: ISO not found",
+								"The new WBFS was not found in the expected directory.",
+								"Error: WBFS not found",
 								MessageBoxButtons.OK,
 								MessageBoxIcon.Error
 								);
@@ -259,18 +268,18 @@ namespace KingdomFileReplacer
 						Process? process = Process.Start(new ProcessStartInfo()
 						{
 							FileName = Path.Combine("WIT", "wit.exe"),
-							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")}\"",
+							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")}\"",
 						});
 						process?.WaitForExit();
 						process?.Close();
 
 						// check if iso was made
-						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")))
+						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")))
 						{
 							MessageBox.Show
 								(
-								"The new ISO was not found in the expected directory.",
-								"Error: ISO not found",
+								"The new WBFS was not found in the expected directory.",
+								"Error: WBFS not found",
 								MessageBoxButtons.OK,
 								MessageBoxIcon.Error
 								);
@@ -368,18 +377,18 @@ namespace KingdomFileReplacer
 						Process? process = Process.Start(new ProcessStartInfo()
 						{
 							FileName = Path.Combine("WIT", "wit.exe"),
-							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")}\"",
+							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")}\"",
 						});
 						process?.WaitForExit();
 						process?.Close();
 
 						// check if iso was made
-						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")))
+						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")))
 						{
 							MessageBox.Show
 								(
-								"The new ISO was not found in the expected directory.",
-								"Error: ISO not found",
+								"The new WBFS was not found in the expected directory.",
+								"Error: WBFS not found",
 								MessageBoxButtons.OK,
 								MessageBoxIcon.Error
 								);
@@ -493,18 +502,18 @@ namespace KingdomFileReplacer
 						Process? process = Process.Start(new ProcessStartInfo()
 						{
 							FileName = Path.Combine("WIT", "wit.exe"),
-							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")}\"",
+							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")}\"",
 						});
 						process?.WaitForExit();
 						process?.Close();
 
 						// check if iso was made
-						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")))
+						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")))
 						{
 							MessageBox.Show
 								(
-								"The new ISO was not found in the expected directory.",
-								"Error: ISO not found",
+								"The new WBFS was not found in the expected directory.",
+								"Error: WBFS not found",
 								MessageBoxButtons.OK,
 								MessageBoxIcon.Error
 								);
@@ -620,18 +629,18 @@ namespace KingdomFileReplacer
 						Process? process = Process.Start(new ProcessStartInfo()
 						{
 							FileName = Path.Combine("WIT", "wit.exe"),
-							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")}\"",
+							Arguments = $"copy -o \"GameFiles\" \"{Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")}\"",
 						});
 						process?.WaitForExit();
 						process?.Close();
 
 						// check if iso was made
-						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.iso")))
+						if (!File.Exists(Path.Combine(Path.GetDirectoryName(SelectGameFileDialog.FileName), $"DokaponKingdom-Modified{ModeComboBox.SelectedItem}.wbfs")))
 						{
 							MessageBox.Show
 								(
-								"The new ISO was not found in the expected directory.",
-								"Error: ISO not found",
+								"The new WBFS was not found in the expected directory.",
+								"Error: WBFS not found",
 								MessageBoxButtons.OK,
 								MessageBoxIcon.Error
 								);

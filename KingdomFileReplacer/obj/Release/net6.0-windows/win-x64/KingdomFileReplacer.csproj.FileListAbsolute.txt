@@ -337,7 +337,6 @@ C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\hostfxr.dll
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\hostpolicy.dll
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\mscordaccore.dll
-C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\mscordaccore_amd64_amd64_6.0.1022.47605.dll
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\mscordbi.dll
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\mscorrc.dll
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\msquic.dll
@@ -581,3 +580,4 @@ C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\obj\Release\
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\obj\Release\net6.0-windows\win-x64\KingdomFileReplacer.pdb
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\obj\Release\net6.0-windows\win-x64\KingdomFileReplacer.genruntimeconfig.cache
 C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\obj\Release\net6.0-windows\win-x64\ref\KingdomFileReplacer.dll
+C:\Users\jajo7\source\repos\KingdomFileReplacer\KingdomFileReplacer\bin\Release\net6.0-windows\win-x64\mscordaccore_amd64_amd64_6.0.1322.58009.dll
